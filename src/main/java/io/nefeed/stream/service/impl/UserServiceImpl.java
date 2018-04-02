@@ -7,6 +7,7 @@ import io.nefeed.stream.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +30,8 @@ public class UserServiceImpl implements UserService {
 
     @AnalysisActuator(note = "查找用户")
     @Override
-    public List<User> findUser(Map<String, Object> map) {
-        return userDao.findUsers(map);
+    public List<User> findUser() {
+        return userDao.findUsers(new HashMap<>(16));
     }
 
     @Override

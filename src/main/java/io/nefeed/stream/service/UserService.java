@@ -20,11 +20,10 @@ public interface UserService {
     User login(User user);
 
     /**
-     * @param map
      *
      * @return
      */
-    List<User> findUser(Map<String, Object> map);
+    List<User> findUser();
 
     /**
      * @param map

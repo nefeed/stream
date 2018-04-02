@@ -12,7 +12,8 @@ import java.util.List;
  * @mail nefeed@163.com
  * @time 2018-03-31 03:27
  */
-@Controller("/page")
+@Controller()
+@RequestMapping("/page")
 public class PageRouterController {
 
     @RequestMapping("/")
