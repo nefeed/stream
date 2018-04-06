@@ -92,13 +92,14 @@
             <version>${druid.version}</version>
         </dependency>
 
+        <!-- 在代码中轻松的使用@ConfigurationProperties注解注入属性文件配置的属性值 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- 在代码中轻松的使用@ConfigurationProperties注解注入属性文件配置的属性值 -->
+        <!-- Test Dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

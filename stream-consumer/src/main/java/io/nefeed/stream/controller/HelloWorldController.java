@@ -1,6 +1,6 @@
 package io.nefeed.stream.controller;
 
-import io.nefeed.stream.service.HelloWorldService;
+import io.nefeed.stream.action.HelloWorldAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloWorldController {
     @Autowired
-    private HelloWorldService helloWorldService;
+    private HelloWorldAction helloWorldAction;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public String hello(String name) {
-        return helloWorldService.getHelloMessage(name);
+        return helloWorldAction.getHelloWorldService().getHelloMessage(name);
     }
 }
