@@ -13,5 +13,7 @@
     <import resource="classpath:spring-context-druid-stat.xml"/>
     <!-- 事务管理配置 -->
     <import resource="classpath:spring-context-tx.xml"/>
+    <!-- dubbo 配置 -->
+    <!--<import resource="classpath:dubbo-provider.xml"/>-->
 
 </beans>

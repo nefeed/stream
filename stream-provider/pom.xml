@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.nefeed.stream</groupId>
+    <parent>
+        <groupId>io.nefeed</groupId>
+        <artifactId>stream-project</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
     <artifactId>stream-provider</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>stream-provider</name>
     <description>Rule Engine Demo</description>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <dubbo-service.version>0.0.1</dubbo-service.version>
+        <stream-dubbo-service.version>0.0.1</stream-dubbo-service.version>
 
         <spring.version>5.0.4.RELEASE</spring.version>
         <druid.version>1.1.9</druid.version>
-        <fastjson.version>1.2.46</fastjson.version>
         <!-- 数据库相关版本 -->
         <jdbc.driver.version>5.1.46</jdbc.driver.version>
         <mybatis.version>3.4.6</mybatis.version>
@@ -40,9 +38,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.nefeed.stream</groupId>
-            <artifactId>dubbo-service</artifactId>
-            <version>${dubbo-service.version}</version>
+            <groupId>io.nefeed</groupId>
+            <artifactId>stream-dubbo-service</artifactId>
+            <version>${stream-dubbo-service.version}</version>
         </dependency>
 
         <dependency>
@@ -116,9 +114,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
         <dependency>

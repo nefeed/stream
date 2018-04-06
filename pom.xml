@@ -1,0 +1,214 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--<parent>-->
+        <!--<groupId>org.sonatype.oss</groupId>-->
+        <!--<artifactId>oss-parent</artifactId>-->
+        <!--<version>7</version>-->
+    <!--</parent>-->
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>io.nefeed</groupId>
+    <artifactId>stream-project</artifactId>
+    <version>0.0.1</version>
+
+    <packaging>pom</packaging>
+
+    <name>Rule Engine Project</name>
+    <description>Rule Engine Project</description>
+    <url>https://github.com/nefeed/stream</url>
+
+    <modules>
+        <module>stream-dubbo-service</module>
+        <module>stream-provider</module>
+        <module>stream-consumer</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.0.0.RELEASE</spring-boot.version>
+        <dubbo.version>2.5.10</dubbo.version>
+        <zkclient.version>0.2</zkclient.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
+        <curator-framework.version>2.12.0</curator-framework.version>
+        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+
+        <fastjson.version>1.2.46</fastjson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- Spring Boot -->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-dependencies</artifactId>-->
+                <!--<version>${spring-boot.version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+            <!-- Dubbo -->
+            <!--<dependency>-->
+                <!--<groupId>com.alibaba</groupId>-->
+                <!--<artifactId>dubbo</artifactId>-->
+                <!--<version>${dubbo.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.springframework</groupId>-->
+                        <!--<artifactId>spring</artifactId>-->
+                    <!--</exclusion>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>javax.servlet</groupId>-->
+                        <!--<artifactId>servlet-api</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+
+            <!--&lt;!&ndash; ZK &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.apache.zookeeper</groupId>-->
+                <!--<artifactId>zookeeper</artifactId>-->
+                <!--<version>${zookeeper.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.slf4j</groupId>-->
+                        <!--<artifactId>slf4j-log4j12</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>com.101tec</groupId>-->
+                <!--<artifactId>zkclient</artifactId>-->
+                <!--<version>${zkclient.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<artifactId>slf4j-api</artifactId>-->
+                        <!--<groupId>org.slf4j</groupId>-->
+                    <!--</exclusion>-->
+                    <!--<exclusion>-->
+                        <!--<artifactId>log4j</artifactId>-->
+                        <!--<groupId>log4j</groupId>-->
+                    <!--</exclusion>-->
+                    <!--<exclusion>-->
+                        <!--<artifactId>slf4j-log4j12</artifactId>-->
+                        <!--<groupId>org.slf4j</groupId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.apache.curator</groupId>-->
+                <!--<artifactId>curator-framework</artifactId>-->
+                <!--<version>${curator-framework.version}</version>-->
+            <!--</dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
+    <scm>
+        <url>https://github.com/nefeed/stream</url>
+        <connection>scm:git:git:////github.com/nefeed/stream.git</connection>
+        <developerConnection>scm:git:ssh://git@//github.com/nefeed/stream.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/nefeed/stream/issues</url>
+    </issueManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>Dubbo User Mailling List</name>
+            <subscribe>dubbo+subscribe@googlegroups.com</subscribe>
+            <unsubscribe>dubbo+unsubscribe@googlegroups.com</unsubscribe>
+            <post>dubbo@googlegroups.com</post>
+            <archive>http://groups.google.com/group/dubbo</archive>
+        </mailingList>
+        <mailingList>
+            <name>Dubbo Developer Mailling List</name>
+            <subscribe>dubbo-developers+subscribe@googlegroups.com</subscribe>
+            <unsubscribe>dubbo-developers+unsubscribe@googlegroups.com</unsubscribe>
+            <post>dubbo-developers@googlegroups.com</post>
+            <archive>http://groups.google.com/group/dubbo-developers</archive>
+        </mailingList>
+    </mailingLists>
+    <developers>
+        <developer>
+            <id>dubbo.io</id>
+            <name>The Dubbo Project Contributors</name>
+            <email>dubbo@googlegroups.com</email>
+            <url>http://dubbo.io</url>
+            <organization>The Dubbo Project</organization>
+            <organizationUrl>http://dubbo.io</organizationUrl>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-deploy-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<skip>true</skip>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<additionalparam>-Xdoclint:none</additionalparam>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <!--<profiles>-->
+    <!--<profile>-->
+    <!--<id>release</id>-->
+    <!--<build>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.apache.maven.plugins</groupId>-->
+    <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+    <!--<executions>-->
+    <!--<execution>-->
+    <!--<phase>package</phase>-->
+    <!--<goals>-->
+    <!--<goal>jar</goal>-->
+    <!--</goals>-->
+    <!--</execution>-->
+    <!--</executions>-->
+    <!--</plugin>-->
+    <!--<plugin>-->
+    <!--<groupId>org.apache.maven.plugins</groupId>-->
+    <!--<artifactId>maven-gpg-plugin</artifactId>-->
+    <!--<executions>-->
+    <!--<execution>-->
+    <!--<phase>verify</phase>-->
+    <!--<goals>-->
+    <!--<goal>sign</goal>-->
+    <!--</goals>-->
+    <!--</execution>-->
+    <!--</executions>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    <!--</build>-->
+    <!--</profile>-->
+    <!--</profiles>-->
+
+</project>
