@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--<parent>-->
-        <!--<groupId>org.sonatype.oss</groupId>-->
-        <!--<artifactId>oss-parent</artifactId>-->
-        <!--<version>7</version>-->
+    <!--<groupId>org.sonatype.oss</groupId>-->
+    <!--<artifactId>oss-parent</artifactId>-->
+    <!--<version>7</version>-->
     <!--</parent>-->
 
     <parent>
@@ -38,15 +38,38 @@
         <spring-boot.version>2.0.0.RELEASE</spring-boot.version>
         <dubbo.version>2.5.10</dubbo.version>
         <zkclient.version>0.2</zkclient.version>
-        <zookeeper.version>3.4.9</zookeeper.version>
+        <zookeeper.version>3.4.11</zookeeper.version>
         <curator-framework.version>2.12.0</curator-framework.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+
+        <!-- 日志相关 -->
+        <slf4j.version>1.7.25</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
 
         <fastjson.version>1.2.46</fastjson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Begin: 日志依赖包 -->
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!-- End: 日志依赖包 -->
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -56,67 +79,79 @@
 
             <!-- Spring Boot -->
             <!--<dependency>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-dependencies</artifactId>-->
-                <!--<version>${spring-boot.version}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-dependencies</artifactId>-->
+            <!--<version>${spring-boot.version}</version>-->
+            <!--<type>pom</type>-->
+            <!--<scope>import</scope>-->
             <!--</dependency>-->
+
             <!-- Dubbo -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- ZK -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- ZkClient是由Datameer的工程师开发的开源客户端，
+                对Zookeeper的原生API进行了包装，实现了超时重连、Watcher反复注册等功能。 -->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Netflix Zookeeper 客户端框架 -->
             <!--<dependency>-->
-                <!--<groupId>com.alibaba</groupId>-->
-                <!--<artifactId>dubbo</artifactId>-->
-                <!--<version>${dubbo.version}</version>-->
-                <!--<exclusions>-->
-                    <!--<exclusion>-->
-                        <!--<groupId>org.springframework</groupId>-->
-                        <!--<artifactId>spring</artifactId>-->
-                    <!--</exclusion>-->
-                    <!--<exclusion>-->
-                        <!--<groupId>javax.servlet</groupId>-->
-                        <!--<artifactId>servlet-api</artifactId>-->
-                    <!--</exclusion>-->
-                <!--</exclusions>-->
+            <!--<groupId>org.apache.curator</groupId>-->
+            <!--<artifactId>curator-framework</artifactId>-->
+            <!--<version>${curator-framework.version}</version>-->
             <!--</dependency>-->
 
-            <!--&lt;!&ndash; ZK &ndash;&gt;-->
+            <!-- Dubbo Spring Boot Start -->
             <!--<dependency>-->
-                <!--<groupId>org.apache.zookeeper</groupId>-->
-                <!--<artifactId>zookeeper</artifactId>-->
-                <!--<version>${zookeeper.version}</version>-->
-                <!--<exclusions>-->
-                    <!--<exclusion>-->
-                        <!--<groupId>org.slf4j</groupId>-->
-                        <!--<artifactId>slf4j-log4j12</artifactId>-->
-                    <!--</exclusion>-->
-                <!--</exclusions>-->
+            <!--<groupId>com.alibaba.spring.boot</groupId>-->
+            <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
+            <!--<version>2.0.0</version>-->
             <!--</dependency>-->
 
-            <!--<dependency>-->
-                <!--<groupId>com.101tec</groupId>-->
-                <!--<artifactId>zkclient</artifactId>-->
-                <!--<version>${zkclient.version}</version>-->
-                <!--<exclusions>-->
-                    <!--<exclusion>-->
-                        <!--<artifactId>slf4j-api</artifactId>-->
-                        <!--<groupId>org.slf4j</groupId>-->
-                    <!--</exclusion>-->
-                    <!--<exclusion>-->
-                        <!--<artifactId>log4j</artifactId>-->
-                        <!--<groupId>log4j</groupId>-->
-                    <!--</exclusion>-->
-                    <!--<exclusion>-->
-                        <!--<artifactId>slf4j-log4j12</artifactId>-->
-                        <!--<groupId>org.slf4j</groupId>-->
-                    <!--</exclusion>-->
-                <!--</exclusions>-->
-            <!--</dependency>-->
-
-            <!--<dependency>-->
-                <!--<groupId>org.apache.curator</groupId>-->
-                <!--<artifactId>curator-framework</artifactId>-->
-                <!--<version>${curator-framework.version}</version>-->
-            <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
 
@@ -160,19 +195,23 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-deploy-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<skip>true</skip>-->
-                <!--</configuration>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-deploy-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<skip>true</skip>-->
+            <!--</configuration>-->
             <!--</plugin>-->
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-javadoc-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<additionalparam>-Xdoclint:none</additionalparam>-->
-                <!--</configuration>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<additionalparam>-Xdoclint:none</additionalparam>-->
+            <!--</configuration>-->
             <!--</plugin>-->
         </plugins>
     </build>
