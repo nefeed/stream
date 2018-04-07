@@ -20,6 +20,6 @@
                    ref="helloWorldService" retries="0" timeout="6000"/>
 
     <!-- 和本地服务一样实现远程服务 -->
-    <bean id="helloWorldService" class="io.nefeed.stream.service.impl.HelloWorldServiceImpl"/>
+    <bean id="helloWorldService" class="io.nefeed.stream.service.HelloWorldServiceImpl"/>
 
 </beans>

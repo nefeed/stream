@@ -1,12 +1,14 @@
 package io.nefeed.stream.entity;
 
+import java.io.Serializable;
+
 /**
  * 用户表
  * @author 章华隽
  * @mail nefeed@163.com
  * @time 2018-03-09 15:36
  */
-public class User {
+public class User implements Serializable {
 
     @Override
     public String toString() {

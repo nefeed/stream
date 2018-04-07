@@ -1,7 +1,7 @@
 package io.nefeed.stream.controller;
 
-import io.nefeed.stream.action.HelloWorldAction;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.alibaba.dubbo.config.annotation.Reference;
+import io.nefeed.stream.service.HelloWorldService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class HelloWorldController {
-    @Autowired
-    private HelloWorldAction helloWorldAction;
+    @Reference(version = "1.0.0",
+            application = "${dubbo.application.id}",
+            url = "dubbo://localhost:20880")
+    private HelloWorldService helloWorldService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public String hello(String name) {
-        return helloWorldAction.getHelloWorldService().getHelloMessage(name);
+        return helloWorldService.getHelloMessage(name);
     }
 }

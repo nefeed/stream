@@ -1,11 +1,10 @@
-package io.nefeed.stream.service.impl;
+package io.nefeed.stream.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import io.nefeed.stream.annotation.AnalysisActuator;
 import io.nefeed.stream.dao.UserDao;
 import io.nefeed.stream.entity.User;
-import io.nefeed.stream.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,12 @@ import java.util.Map;
  * @mail nefeed@163.com
  * @time 2018-03-09 16:56
  */
-@Service("userService")
+@Service(
+        version = "1.0.0",
+        application = "${dubbo.application.id}",
+        protocol = "${dubbo.protocol.id}",
+        registry = "${dubbo.registry.id}"
+)
 public class UserServiceImpl implements UserService {
 
     @Autowired

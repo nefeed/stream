@@ -1,11 +1,12 @@
 package io.nefeed.stream.controller;
 
 import io.nefeed.stream.service.HelloWorldService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * @author 章华隽
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class HelloWorldController {
-    @Autowired
+    @Resource
     private HelloWorldService helloWorldService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
